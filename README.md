@@ -1,3 +1,3 @@
 # Reso
 
-A college event website
+A college event website for MIT.
