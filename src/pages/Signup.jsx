@@ -14,29 +14,39 @@ const Signup = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    if (pass1 != password) {
+    if(!name){
+      toast.error("Name is required");
+      return;
+    }
+    else if(!email){
+      toast.error("Name is required");
+      return;
+    }
+    else if (pass1 != password) {
       toast.error("Your password is not the same, Please enter the same password");
       return;
-    } else if (pass1.length == 0) {
+    } else if( pass1.length == 0) {
       toast.error("Please enter a password");
       return;
     }
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      const user = auth.currentUser;
-      console.log(user.email);
-      console.log(name);
-      if (user) {
-        await setDoc(doc(db, "Users", user.uid), {
-          email: user.email,
-          name: name
-        });
+    else{
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        const user = auth.currentUser;
+        console.log(user.email);
+        console.log(name);
+        if (user) {
+          await setDoc(doc(db, "Users", user.uid), {
+            email: user.email,
+            name: name
+          });
+        }
+        toast.success('Account Successfully created!');
+        setTimeout(function() {window.location.href = "/"},1000)
+      } catch (e) {
+        toast.error(e.message);
+        console.log(e.message);
       }
-      toast.success('Account Successfully created!');
-      setTimeout(function() {window.location.href = "/"},1000)
-    } catch (e) {
-      toast.error(e.message);
-      console.log(e.message);
     }
   };
 
