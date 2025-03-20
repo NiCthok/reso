@@ -108,7 +108,7 @@ const Signup = () => {
                 onChange={(e) => setPass2(e.target.value)}
               />
             </div>
-            <Button label={"Sign Up"} type={"submit"} />
+            <Button label={"Create Account"} type={"submit"} />
           </div>
         </form>
         <div className="flex ">

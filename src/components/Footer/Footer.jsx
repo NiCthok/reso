@@ -10,12 +10,12 @@ import Input from "../Input.jsx";
 import Button  from "../Button";
 function Footer() {
   return (
-    <footer className="bg-slate-100 p-4 w-full self-baseline border-slate-300 border-t-2 shadow-sm">
+    <footer className="bg-gray-500 p-4 w-full self-baseline border-slate-900 border-t-2 shadow-sm">
       <div className="flex justify-around items-center">
         <div className="flex flex-col justify-center">
           <Link
             to="/"
-            className="text-gray-700 text-2xl font-bold  hover:text-gray-500 self-center"
+            className="text-gray-900 text-2xl font-bold  hover:text-black self-center"
           >
             Reso
           </Link>
@@ -29,19 +29,19 @@ function Footer() {
         <div className="flex flex-col gap-2">
           <NavLink
             to={"/"}
-            className="text-gray-700 text-lg font-semibold px-3 hover:text-gray-500"
+            className="text-gray-900 text-lg font-semibold px-3 hover:text-black"
           >
             Home
           </NavLink>
           <NavLink
             to={"/"}
-            className="text-gray-700 text-lg font-semibold px-3 hover:text-gray-500"
+            className="text-gray-900 text-lg font-semibold px-3 hover:text-black"
           >
             About
           </NavLink>
           <NavLink
             to={"/"}
-            className="text-gray-700 text-lg font-semibold px-3 hover:text-gray-500"
+            className="text-gray-900 text-lg font-semibold px-3 hover:text-black"
           >
             Contact Us
           </NavLink>
