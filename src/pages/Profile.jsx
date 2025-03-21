@@ -1,14 +1,23 @@
 import { doc, getDoc, deleteDoc } from "firebase/firestore";
 import { auth, db } from "../backend/config/firebase";
-import { getAuth, signOut, deleteUser } from "firebase/auth";
+import {
+  getAuth,
+  signOut,
+  deleteUser,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+} from "firebase/auth";
 import Button from "../components/Button";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
 import Edit from "./Edit";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
+import Delete from "./Delete";
 
 const Profile = () => {
   const [popup, setPopup] = useState(false);
+  const [popup_delete, setPopupDelete] = useState(false);
+  const [password, setPassword] = useState("");
   const [profile, setProfile] = useState(null);
   const [uid, setUid] = useState(null);
 
@@ -25,18 +34,27 @@ const Profile = () => {
       });
   };
 
-  const handleDeleteAccount = async () => {
+  const handleDeleteAccount = async (password) => {
+    const user = auth.currentUser;
     if (!uid) return;
-
+    else if (!password) {
+      toast.error("Enter Password");
+      return;
+    } else if (!user) {
+      toast.error("No user is logged in! Please log in again.");
+      return;
+    }
     try {
-      const user = authInstance.currentUser;
+      const credentials = EmailAuthProvider.credential(user.email, password);
+      await reauthenticateWithCredential(user, credentials);
       await deleteDoc(doc(db, "Users", uid));
       await deleteUser(user);
       toast.success("Account deleted successfully!");
-      window.location.href = "/";
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000);
     } catch (error) {
       toast.error(error.message);
-      console.error("Error deleting account:", error.message);
     }
   };
 
@@ -74,7 +92,7 @@ const Profile = () => {
             <Button
               type="button"
               label="Delete Account"
-              onClick={handleDeleteAccount}
+              onClick={() => setPopupDelete(true)}
               className="bg-red-600 text-white"
             />
           </div>
@@ -83,6 +101,13 @@ const Profile = () => {
               name={profile.name}
               onClose={() => setPopup(false)}
               uid={uid}
+            />
+          )}
+          {popup_delete && (
+            <Delete
+              onChange={setPassword}
+              onClickCancel={() => setPopupDelete(false)}
+              onClickDelete={() => handleDeleteAccount(password)}
             />
           )}
         </div>
