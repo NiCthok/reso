@@ -82,11 +82,11 @@ const Profile = () => {
   return (
     <div>
       {profile ? (
-        <div className="h-screen bg-green-200 flex items-center justify-center">
+        <div className="h-screen bg-zinc-950 flex items-center justify-center">
           <div>
-            <h1 className="text-3xl">Profile</h1>
-            <h2>Name: {profile.name}</h2>
-            <h2>Email: {profile.email}</h2>
+            <h1 className="text-3xl text-white">Profile</h1>
+            <h2 className="text-2xl text-white">Name: {profile.name}</h2>
+            <h2 className="text-2xl text-white">Email: {profile.email}</h2>
             <Button type="button" label="Edit" onClick={() => setPopup(true)} />
             <Button type="button" label="Log Out" onClick={handleLogOut} />
             <Button

@@ -38,14 +38,14 @@ const Signup = () => {
         if (user) {
           await setDoc(doc(db, "Users", user.uid), {
             email: user.email,
-            name: name
+            name: name,
+            role: "user"
           });
         }
         toast.success('Account Successfully created!');
         setTimeout(function() {window.location.href = "/"},1000)
       } catch (e) {
         toast.error(e.message);
-        console.log(e.message);
       }
     }
   };

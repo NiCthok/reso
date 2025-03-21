@@ -1,10 +1,10 @@
-import { bouncyArc } from "ldrs";
+import { helix } from "ldrs";
 const Loading = () => {
-    bouncyArc.register();
+    helix.register();
   return (
     <div className="flex justify-center items-center h-screen bg-zinc-950 ">
       <div>
-        <l-bouncy-arc size="100" speed="1.75" color="green"></l-bouncy-arc>
+        <l-helix size="140" speed="1.75" color="green"></l-helix>
       </div>
     </div>
   );
