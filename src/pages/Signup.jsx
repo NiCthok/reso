@@ -51,7 +51,7 @@ const Signup = () => {
 
   return (
     <div className="h-screen flex items-center justify-center bg-gray-900 ">
-      <div className="mb-4 w-1/5 pt-4">
+      <div className="mb-4 sm:w-3/5 md:w-2/5 lg:w-1/5">
         <h1 className="text-4xl font-semibold text-center text-white uppercase mb-6">
           Reso
         </h1>
