@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../backend/config/firebase";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -12,24 +12,28 @@ const Login = () => {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      toast.success("sign in successfully")
-      setTimeout(function() {window.location.href = "/"},1000)
-    } catch (e) {
-      toast.error(e.message)
+    if (!email) {
+      toast.error("Enter an email!");
+      return;
+    } else if (!password) {
+      toast.error("Enter a password!");
+      return;
+    } else {
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        toast.success("sign in successfully");
+        setTimeout(function () {
+          window.location.href = "/";
+        }, 1000);
+      } catch (e) {
+        toast.error(e.message);
+      }
     }
   };
 
   return (
     <div className="h-screen flex items-center justify-center bg-zinc-950">
       <div className="mb-4 w-1/5">
-        <RouterLink
-          to="/"
-          className="mr-4 text-white place-items-start hover:underline"
-        >
-          Home
-        </RouterLink>
         <h1 className="text-4xl font-semibold text-center text-white uppercase mb-6">
           Reso
         </h1>

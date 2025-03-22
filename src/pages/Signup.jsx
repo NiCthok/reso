@@ -53,12 +53,6 @@ const Signup = () => {
   return (
     <div className="h-screen flex items-center justify-center bg-gray-900 ">
       <div className="mb-4 w-1/5 pt-4">
-        <RouterLink
-          to="/"
-          className="mr-4 text-green-600 place-items-start hover:underline"
-        >
-          Home
-        </RouterLink>
         <h1 className="text-4xl font-semibold text-center text-white uppercase mb-6">
           Reso
         </h1>
