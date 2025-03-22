@@ -1,8 +1,7 @@
-import { useState,useEffect } from "react";
-import { Link as RouterLink,useNavigate } from "react-router-dom";
-import { getAuth,signInWithEmailAndPassword,getRedirectResult,GoogleAuthProvider,signInWithRedirect } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore"
-import { auth,db } from "../backend/config/firebase";
+import { useState } from "react";
+import { Link as RouterLink} from "react-router-dom";
+import { signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../backend/config/firebase";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import toast from "react-hot-toast";
@@ -22,19 +21,19 @@ const Login = () => {
     } else {
       try {
         await signInWithEmailAndPassword(auth, email, password);
-        toast.success("sign in successfully");
+        toast.success("Signed in successfully!");
         setTimeout(function () {
           window.location.href = "/";
         }, 1000);
       } catch (e) {
-        toast.error(e.message);
+        toast.error(error.message.replace("Firebase: ", ""));
       }
     }
   };
 
   return (
     <div className="h-screen flex items-center justify-center bg-zinc-950">
-      <div className="mb-4 w-1/5">
+      <div className="mb-4 w-1/5 sm:w-4/5">
         <h1 className="text-4xl font-semibold text-center text-white uppercase mb-6">
           Reso
         </h1>
