@@ -1,7 +1,7 @@
 import Button from "../components/Button";
 import Input from "../components/Input";
 
-const Delete = ({ onChange, onClickCancel, onClickDelete, password }) => {
+const Delete = ({ onChange, onClickCancel, onClickDelete }) => {
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-zinc-950/75">
       <div className="bg-zinc-900 p-6 rounded-lg shadow-lg">
