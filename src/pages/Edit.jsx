@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Button from "../components/Button";
-import Input from "../components/Input";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../backend/config/firebase";
 import toast from "react-hot-toast";
@@ -31,15 +30,16 @@ const Edit = ({ name, onClose, uid }) => {
     <div className="fixed inset-0 flex justify-center items-center bg-zinc-950/75">
       <div className="bg-zinc-900 p-6 rounded-lg shadow-lg">
         <h2 className="text-xl text-white font-bold mb-4">Edit Profile</h2>
-
-        <Input
-          label={"Name"}
+        <label className="text-white">Name</label>
+        <input
+          id="name"
+          type="text"
           placeholder={name}
-          type={"text"}
-          value={updatedName}
-          onChange={(e) => setUpdatedName(e.target.value)}
+          onChange={(e) => {
+            setUpdatedName(e.target.value);
+          }}
           required={true}
-          id={"name"}
+          className="w-full border-0 border-b-2 border-zinc-800 bg-transparent px-2 py-3 text-white text-sm focus:outline-none focus:border-blue-500"
         />
 
         <div className="mt-4 flex justify-end gap-2">
