@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function Input({
   label,
   placeholder,
@@ -7,22 +9,42 @@ export default function Input({
   required = false,
   autoComplete = "off",
 }) {
+  const [isFocused, setIsFocused] = useState(false);
+  const [value, setValue] = useState("");
+
+  const handleFocus = () => setIsFocused(true);
+  const handleBlur = () => setIsFocused("");
+
   return (
-    <div className="py-1 flex flex-col justify-center">
-      <label className="text-zinc-100" htmlFor={id}>
+    <div className="relative w-full pt-4">
+      <label
+        htmlFor={id}
+        className={`absolute left-0 text-gray-400 transition-all 
+        ${
+          isFocused || value
+            ? "top-1 text-sm text-blue-500"
+            : "top-6 text-base text-zinc-100"
+        }`}
+      >
         {label}
       </label>
+
       <input
         id={id}
-        placeholder={placeholder}
         type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+          onChange && onChange(e);
+        }}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         autoComplete={autoComplete}
-        name={type}
-        onChange={onChange}
         required={required}
         autoCapitalize="none"
         autoCorrect="off"
-        className="mr-2.5 mb-2 h-full min-h-[44px] w-full rounded-lg border border-zinc-800 px-4 py-3 text-sm font-medium focus:outline-0 bg-transparent text-white placeholder:text-zinc-400"
+        className="w-full border-0 border-b-2 border-zinc-800 bg-transparent px-2 py-3 text-white text-sm focus:outline-none focus:border-blue-500 placeholder-transparent"
       />
     </div>
   );

@@ -1,11 +1,12 @@
-import { Link as RouterLink } from "react-router-dom";
-import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Link as RouterLink,useNavigate } from "react-router-dom";
+import { useState,useEffect } from "react";
+import { createUserWithEmailAndPassword ,getAuth,getRedirectResult,GoogleAuthProvider,signInWithRedirect } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { auth,db } from "../backend/config/firebase";
+import { auth, db } from "../backend/config/firebase";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
+
 const Signup = () => {
   const [pass1, setPass1] = useState("");
   const [password, setPass2] = useState("");
@@ -14,22 +15,18 @@ const Signup = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    if(!name){
+    if (!name) {
       toast.error("Name is required");
       return;
-    }
-    else if(!email){
+    } else if (!email) {
       toast.error("Name is required");
       return;
-    }
-    else if (pass1 != password) {
-      toast.error("Your password is not the same, Please enter the same password");
+    } else if (pass1 != password) {
+      toast.error(
+        "Your password is not the same, Please enter the same password"
+      );
       return;
-    } else if( pass1.length == 0) {
-      toast.error("Please enter a password");
-      return;
-    }
-    else{
+    } else {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
         const user = auth.currentUser;
@@ -39,11 +36,13 @@ const Signup = () => {
           await setDoc(doc(db, "Users", user.uid), {
             email: user.email,
             name: name,
-            role: "user"
+            role: "user",
           });
         }
-        toast.success('Account Successfully created!');
-        setTimeout(function() {window.location.href = "/"},1000)
+        toast.success("Account Successfully created!");
+        setTimeout(function () {
+          window.location.href = "/";
+        }, 1000);
       } catch (e) {
         toast.error(e.message);
       }
@@ -59,7 +58,10 @@ const Signup = () => {
         <h1 className="text-xl font-semibold text-center text-white mb-5">
           Sign Up
         </h1>
-        <Button label={"Sign Up with Google"} />
+        <Button
+          label={"Sign Up with Google"}
+          onClick={"handleSignInWithGoogle"}
+        />
         <form noValidate className="mb-4" onSubmit={handleSignUp}>
           <div className="flex items-center justify-center">
             <hr className="flex-grow border-white " />

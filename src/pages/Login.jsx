@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../backend/config/firebase";
+import { useState,useEffect } from "react";
+import { Link as RouterLink,useNavigate } from "react-router-dom";
+import { getAuth,signInWithEmailAndPassword,getRedirectResult,GoogleAuthProvider,signInWithRedirect } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore"
+import { auth,db } from "../backend/config/firebase";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import toast from "react-hot-toast";
@@ -33,14 +34,17 @@ const Login = () => {
 
   return (
     <div className="h-screen flex items-center justify-center bg-zinc-950">
-      <div className="mb-4 w-1/5">
+      <div className="mb-4 w-1/5 border-1 shadow-lg">
         <h1 className="text-4xl font-semibold text-center text-white uppercase mb-6">
           Reso
         </h1>
         <h1 className="text-xl font-semibold text-center text-white mb-5">
           Welcome back
         </h1>
-        <Button label={"Sign In with Google"} onClick={""} />
+        <Button
+          label={"Sign In with Google"}
+          onClick={"handleSignInWithGoogle"}
+        />
         <form noValidate className="mb-4" onSubmit={handleSignIn}>
           <div className="grid gap-2">
             <div className="flex items-center justify-center">
