@@ -24,7 +24,6 @@ const Edit = ({ name, onClose, uid }) => {
       }, 1000);
     } catch (e) {
       toast.error(e.message);
-      console.log(e.message);
     }
   };
 

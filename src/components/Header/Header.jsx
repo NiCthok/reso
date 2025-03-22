@@ -30,7 +30,7 @@ const Header = () => {
   }, [location.pathname]);
 
   return (
-    <nav className="fixed top-0 w-screen bg-gray-500 p-4 pr-7 shadow flex justify-between">
+    <nav className="fixed top-0 left-0 w-full bg-gray-500 p-4 pr-7 shadow flex justify-between z-50">
       <div>
         <span
           className="mr-4 cursor-pointer"

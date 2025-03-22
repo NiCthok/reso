@@ -30,7 +30,7 @@ const UserHeader = () => {
   }, [location.pathname]);
 
   return (
-    <nav className="fixed top-0 w-screen bg-white dark:bg-gray-500 p-4 pr-7 shadow flex justify-between">
+    <nav className="fixed top-0 w-screen bg-white dark:bg-gray-500 p-4 pr-7 shadow flex justify-between z-50">
       <div>
         <span
           className="mr-4 cursor-pointer"

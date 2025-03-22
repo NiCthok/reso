@@ -14,11 +14,9 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("User login successfully");
       toast.success("sign in successfully")
       setTimeout(function() {window.location.href = "/"},1000)
     } catch (e) {
-      console.log(e.message);
       toast.error(e.message)
     }
   };
