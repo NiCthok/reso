@@ -34,7 +34,7 @@ const Login = () => {
 
   return (
     <div className="h-screen flex items-center justify-center bg-zinc-950">
-      <div className="mb-4 w-1/5 border-1 shadow-lg">
+      <div className="mb-4 w-1/5">
         <h1 className="text-4xl font-semibold text-center text-white uppercase mb-6">
           Reso
         </h1>
