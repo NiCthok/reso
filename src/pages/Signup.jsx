@@ -44,7 +44,7 @@ const Signup = () => {
           window.location.href = "/";
         }, 1000);
       } catch (e) {
-        toast.error(e.message);
+        toast.error(e.message.replace("Firebase: ", ""));
       }
     }
   };
