@@ -34,7 +34,7 @@ export default function ImageSlider() {
   };
 
   return (
-    <div className="h-screen bg-zinc-950 flex flex-col items-center justify-center relative px-4">
+    <div className="h-screen bg-transparent flex flex-col items-center justify-center relative px-4">
       <h1
         className="font-extrabold text-4xl md:text-5xl text-white tracking-widest mb-4 text-center"
         style={{

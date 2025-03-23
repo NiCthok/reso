@@ -1,11 +1,7 @@
 const About = () => {
   return (
-    <div className="h-screen bg-zinc-950 text-white flex flex-col items-center justify-center px-6 text-center">
-      <h1 className="font-extrabold text-4xl md:text-5xl text-white tracking-widest mb-6 text-center"
-        style={{
-          WebkitTextStroke: "1px #ff6347",
-        }}
-      >
+    <div className="bg-transparent text-white flex flex-col items-center justify-center px-6 text-center">
+      <h1 className="font-extrabold text-4xl md:text-5xl text-white tracking-widest mb-6 text-center">
         ABOUT RESO 2025
       </h1>
 

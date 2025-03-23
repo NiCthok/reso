@@ -4,7 +4,7 @@ import Home from "./Home";
 
 const Main = () => {
   return (
-    <div>
+    <div className="bg-black bg-[url('/resoOrange.png')] bg-contain bg-no-repeat bg-center bg-fixed">
       <section id="home"><Home /></section>
       <section id="event"><Event /></section>
       <section id="about"><About /></section>
