@@ -6,6 +6,7 @@ const Delete = ({ onChange, onClickCancel, onClickDelete }) => {
     <div className="fixed inset-0 flex justify-center items-center bg-zinc-950/75">
       <div className="bg-zinc-900 p-6 rounded-lg shadow-lg">
         <Input
+        id={"password"}
           label="Enter Your Password"
           placeholder="Password"
           onChange={(e) => onChange(e.target.value)}

@@ -1,6 +1,12 @@
-import { Link as RouterLink,useNavigate } from "react-router-dom";
-import { useState,useEffect } from "react";
-import { createUserWithEmailAndPassword ,getAuth,getRedirectResult,GoogleAuthProvider,signInWithRedirect } from "firebase/auth";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  getRedirectResult,
+  GoogleAuthProvider,
+  signInWithRedirect,
+} from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../backend/config/firebase";
 import Button from "../components/Button";
@@ -50,10 +56,10 @@ const Signup = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-900 ">
-      <div className="mb-4 sm:w-3/5 md:w-2/5 lg:w-1/5">
-        <h1 className="text-4xl font-semibold text-center text-white uppercase mb-6">
-          Reso
+    <div className="h-screen flex items-center justify-center  ">
+      <div className="mb-4 sm:w-3/5 md:w-2/5 lg:w-1/5 bg-slate-950 py-6 px-6 rounded-xl drop-shadow-[0_0_40px_rgba(0,102,255,0.8)] shadow-[0_0_15px_rgba(0,102,255,0.8)]">
+        <h1 className="text-4xl text-center  font-extrabold text-white uppercase mb-6 [text-shadow:0_0_10px_rgba(255,0,0,0.8),0_0_20px_rgba(255,0,0,1),0_0_30px_rgba(255,0,0,1)]">
+          Reso 2025
         </h1>
         <h1 className="text-xl font-semibold text-center text-white mb-5">
           Sign Up
@@ -109,7 +115,10 @@ const Signup = () => {
         </form>
         <div className="flex ">
           <h3 className=" mr-1 text-white">Already have an acount?</h3>
-          <RouterLink to="/login" className="text-green-600 hover:underline">
+          <RouterLink
+            to="/login"
+            className="text-blue-500 hover:font-semibold hover:underline"
+          >
             Sign In
           </RouterLink>
         </div>

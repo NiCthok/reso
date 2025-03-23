@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export default function Input({
   label,
-  placeholder,
   type,
   id,
   onChange,
@@ -13,13 +12,13 @@ export default function Input({
   const [value, setValue] = useState("");
 
   const handleFocus = () => setIsFocused(true);
-  const handleBlur = () => setIsFocused("");
+  const handleBlur = () => setIsFocused(value !== "");
 
   return (
     <div className="relative w-full pt-4">
       <label
         htmlFor={id}
-        className={`absolute left-0 text-gray-400 transition-all 
+        className={`absolute left-2 text-gray-400 transition-all cursor-text
         ${
           isFocused || value
             ? "top-1 text-sm text-blue-500"
@@ -32,7 +31,6 @@ export default function Input({
       <input
         id={id}
         type={type}
-        placeholder={placeholder}
         value={value}
         onChange={(e) => {
           setValue(e.target.value);
@@ -44,7 +42,7 @@ export default function Input({
         required={required}
         autoCapitalize="none"
         autoCorrect="off"
-        className="w-full border-0 border-b-2 border-zinc-800 bg-transparent px-2 py-3 text-white text-sm focus:outline-none focus:border-blue-500 placeholder-transparent"
+        className="w-full border-0 border-b-2 border-zinc-800 bg-transparent px-2 py-3 text-white text-sm focus:outline-none focus:border-blue-500 placeholder-transparent [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
       />
     </div>
   );

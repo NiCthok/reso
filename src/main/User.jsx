@@ -5,7 +5,9 @@ const User = () => {
   return (
     <div>
       <UserHeader />
-      <Outlet/>
+      <main className="pt-16 bg-black">
+        <Outlet />
+      </main>
       <Footer/>
     </div>
   );

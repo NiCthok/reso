@@ -5,8 +5,10 @@ const Landing = () => {
   return (
     <div>
       <Header />
-      <Outlet/>
-      <Footer/>
+      <main className="pt-16 bg-black">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 };
