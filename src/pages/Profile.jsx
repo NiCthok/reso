@@ -82,7 +82,7 @@ const Profile = () => {
   return (
     <div>
       {profile ? (
-        <div className="h-screen bg-zinc-950 flex items-center justify-center">
+        <div className="h-screen bg-black flex items-center justify-center">
           <div>
             <h1 className="text-3xl text-white">Profile</h1>
             <h2 className="text-2xl text-white">Name: {profile.name}</h2>

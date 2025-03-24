@@ -12,7 +12,7 @@ const MobileLegend = () => {
   console.log(dob);
   return (
     <div>
-      <form>
+      <form className="grid gap-3">
         <label className="text-white text-2xl pt-7">Team Details :</label>
         <div className="grid grid-cols-3 gap-4 mb-2">
           <Input
@@ -93,15 +93,39 @@ const MobileLegend = () => {
           <Gender onChange={setGender} />
         </div>
         <div id="teamLeader" className="mt-4">
-          <label htmlFor="teamleaber" className="text-white text-2xl pt-5">Team Leader Details :</label>
-          <DateOfBirth onChange={setDob} value={dob}/>
-          <Input label={"Contact No."} required={true} type={"number"} id={"contact"}/>
-          <Input label={"Address"} required={true} type={"text"} id={"address"}/>
-          <Input label={"Zip Code"} required={true} type={"number"} id={"zip"}/>
-          <Input label={"State"} required={true} type={"text"} id={"state"}/>
-          <Input label={"Country"} required={true} type={"text"} id={"country"}/>
+          <label htmlFor="teamleaber" className="text-white text-2xl pt-5">
+            Team Leader Details :
+          </label>
+          <DateOfBirth onChange={setDob} value={dob} />
+          <Input
+            label={"Contact No."}
+            required={true}
+            type={"number"}
+            id={"contact"}
+          />
+          <Input
+            label={"Address"}
+            required={true}
+            type={"text"}
+            id={"address"}
+          />
+          <Input
+            label={"Zip Code"}
+            required={true}
+            type={"number"}
+            id={"zip"}
+          />
+          <Input label={"State"} required={true} type={"text"} id={"state"} />
+          <Input
+            label={"Country"}
+            required={true}
+            type={"text"}
+            id={"country"}
+          />
         </div>
-        <Button label={"Continue"} />
+        <div className="flex items-center justify-center">
+          <Button label={"Continue"} type={"button"}/>
+        </div>
       </form>
     </div>
   );

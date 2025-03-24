@@ -12,7 +12,7 @@ import Login from "./pages/Login.jsx";
 import Error from "./pages/Error.jsx";
 import Profile from "./pages/Profile.jsx";
 import Main from "./pages/Main.jsx";
-import Competition from "./pages/Competition.jsx";
+import Register from "./pages/Register.jsx";
 import { auth } from "./backend/config/firebase.jsx";
 import User from "./main/User.jsx";
 import { Toaster } from 'react-hot-toast';
@@ -48,7 +48,7 @@ const App = () => {
         <>
           <Route path="/" element={<User />}>
             <Route path="" element={<Main />} />
-            <Route path="/competition" element={<Competition />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<Error />} />
           </Route>
