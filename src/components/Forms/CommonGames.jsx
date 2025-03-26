@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "../Button";
 import Gender from "../Gender";
 
-const CommonGames = () => {
+const CommonGames = (event) => {
   const[gender, setGender] = useState(null);
   console.log(gender);
 
