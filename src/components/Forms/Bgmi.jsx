@@ -1,18 +1,18 @@
+import Input from "../Input";
 import { useState } from "react";
 import Button from "../Button";
-import Input from "../Input";
 import Gender from "../Gender";
 
-const MobileLegend = () => {
-  const [payment, setPayment] = useState(false);
-  const [gender, setGender] = useState(null);
+const Bgmi = () => {
+  const[gender, setGender] = useState(null);
   console.log(gender);
+  
   return (
     <div>
-      <form className="grid gap-3">
+      <form>
         <label className="text-white text-2xl pt-7">Team Details :</label>
         <div className="grid grid-cols-3 gap-4 mb-2">
-          <Input
+          <Input 
             label={"Team Leader Name"}
             id={"teamLeader"}
             required={true}
@@ -65,19 +65,6 @@ const MobileLegend = () => {
           />
           <Gender onChange={setGender} required={true} />
           <Input
-            label={"Player 5 Name"}
-            id={"Player5"}
-            required={true}
-            type={"text"}
-          />
-          <Input
-            label={"Player 5 ID"}
-            id={"Player5Id"}
-            required={true}
-            type={"number"}
-          />
-          <Gender onChange={setGender} required={true} />
-          <Input
             label={"Substitute Name (Optional)"}
             id={"Player6"}
             type={"text"}
@@ -92,14 +79,14 @@ const MobileLegend = () => {
         <div id="teamleader" className="mt-5">
           <label htmlFor="teamleader" className="text-white text-2xl pt-5"> Team Leader details:</label>
           <Input label={"Address"}
-                 required={true}
-                 type={"text"}
-                 id={"address"}
+                  required={true}
+                  type={"text"}
+                  id={"address"}
           />
           <Input label={"Contact no."}
-                 required={true}
-                 type={"number"}
-                 id={"contact"}
+                  required={true}
+                  type={"number"}
+                  id={"contact"}
           />
         </div>
         <div className="flex items-center justify-center">
@@ -110,4 +97,4 @@ const MobileLegend = () => {
   );
 };
 
-export default MobileLegend;
+export default Bgmi;
