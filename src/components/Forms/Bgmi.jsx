@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "../Button";
 import Gender from "../Gender";
 
-const Bgmi = () => {
+const Bgmi = (event) => {
   const[gender, setGender] = useState(null);
   console.log(gender);
   

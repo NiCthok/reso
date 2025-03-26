@@ -89,57 +89,57 @@ const Register = () => {
         />
 
         {selectedOption?.value === "structural_modelling" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :selectedOption?.value === "autocad_design" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :selectedOption?.value === "code_debugging" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :selectedOption?.value === "code_jumbling" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :selectedOption?.value === "project_showcase" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :selectedOption?.value === "circuit_design" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :selectedOption?.value === "paper_windmill" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :selectedOption?.value === "machine_design_autocad" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :selectedOption?.value === "electrical_component" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :selectedOption?.value === "machine_design_autocad" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :selectedOption?.value === "painting" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) : selectedOption?.value === "photography" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) : selectedOption?.value === "treasure_hunt" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) : selectedOption?.value === "rubik_cube" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) : selectedOption?.value === "quiz" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) : selectedOption?.value === "debate" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :selectedOption?.value === "tekken" ? (
-          <CommonGames />
+          <CommonGames event = {selectedOption.value}/>
         ) : selectedOption?.value === "bgmi" ? (
-          <Pubg />
+          <Pubg event = {selectedOption.value}/>
         ) : selectedOption?.value === "mobile_legend" ? (
-          <MobileLegend />
+          <MobileLegend event = {selectedOption.value}/>
         ) : selectedOption?.value === "fc24" ? (
-          <CommonGames />
+          <CommonGames event = {selectedOption.value}/>
         ) : selectedOption?.value === "light_vocal" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) : selectedOption?.value === "western_solo" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) : selectedOption?.value === "classical&folk" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) : selectedOption?.value === "modern" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) : selectedOption?.value === "cosplay" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) : selectedOption?.value === "reel" ? (
-          <CommonForm />
+          <CommonForm event = {selectedOption.value}/>
         ) :(
           <div className="h-dvh flex justify-center items-center">
             <l-quantum size="150" speed="4" color="blue"></l-quantum>

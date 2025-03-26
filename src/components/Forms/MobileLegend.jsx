@@ -3,7 +3,7 @@ import Button from "../Button";
 import Input from "../Input";
 import Gender from "../Gender";
 
-const MobileLegend = () => {
+const MobileLegend = (event) => {
   const [payment, setPayment] = useState(false);
   const [gender, setGender] = useState(null);
   console.log(gender);
