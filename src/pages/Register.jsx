@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import Tekken from "../components/Forms/Tekken";
-import Pubg from "../components/Forms/Pubg";
+import Pubg from "../components/Forms/Bgmi";
 import MobileLegend from "../components/Forms/MobileLegend";
-import Quiz from "../components/Forms/Quiz";
 import { quantum } from "ldrs";
+import CommonForm from "../components/Forms/CommonForm";
+import CommonGames from "../components/Forms/CommonGames"
 
 
 
@@ -44,10 +44,31 @@ const Register = () => {
   quantum.register();
   const [selectedOption, setSelectedOption] = useState(null);
   const options = [
-    { value: "tekken", label: "Tekken" },
-    { value: "pubg", label: "Pubg" },
-    { value: "mobile_legend", label: "Mobile Legend" },
-    { value: "quiz", label: "Quiz" },
+    { value: "structural_modelling", label: "Structural Modelling (Technical Event)" },
+    { value: "autocad_design", label: "Autocad Design (Technical Event)" },
+    { value: "code_debugging", label: "Code Debugging (Technical Event)" },
+    { value: "code_jumbling", label: "Code Jumbling (Technical Event)" },
+    { value: "project_showcase", label: "Project Showcase (Technical Event)" },
+    { value: "circuit_design", label: "Circuit Design (Technical Event)" },
+    { value: "paper_windmill", label: "Paper Windmill (Technical Event)" },
+    { value: "machine_design_autocad", label: "Machine Design Autocad (Technical Event)" },
+    { value: "electrical_component", label: "Electrical Component Identification & Modelling (Technical Event)" },
+    { value: "painting", label: "Painting (Spot Event)" },
+    { value: "photography", label: "Photography (Spot Event)" },
+    { value: "treasure_hunt", label: "Treasure Hunt (Spot Event)" },
+    { value: "rubik_cube", label: "Rubik's Cube (Spot Event)" },
+    { value: "quiz", label: "Quiz (Literary Event)" },
+    { value: "debate", label: "Debate (Literary Event)" },
+    { value: "tekken", label: "Tekken 7 (Gaming)" },
+    { value: "bgmi", label: "Bgmi (Gaming)" },
+    { value: "mobile_legend", label: "Mobile Legend (Gaming)" },
+    { value: "fc24", label: "FC24 (Gaming)" },
+    { value: "light_vocal", label: "Light Vocal Solo (Voice of RESO)" },
+    { value: "western_solo", label: "Western Solo Unplugged (Voice of RESO)" },
+    { value: "classical&folk", label: "Classical & Folk (Dance Contest)" },
+    { value: "modern", label: "Modern (Dance Contest)" },
+    { value: "cosplay", label: "Cosplay Contest" },
+    { value: "reel", label: "Reel Contest" },
   ];
 
   return (
@@ -67,15 +88,59 @@ const Register = () => {
           menuPosition="fixed"
         />
 
-        {selectedOption?.value === "tekken" ? (
-          <Tekken />
-        ) : selectedOption?.value === "pubg" ? (
+        {selectedOption?.value === "structural_modelling" ? (
+          <CommonForm />
+        ) :selectedOption?.value === "autocad_design" ? (
+          <CommonForm />
+        ) :selectedOption?.value === "code_debugging" ? (
+          <CommonForm />
+        ) :selectedOption?.value === "code_jumbling" ? (
+          <CommonForm />
+        ) :selectedOption?.value === "project_showcase" ? (
+          <CommonForm />
+        ) :selectedOption?.value === "circuit_design" ? (
+          <CommonForm />
+        ) :selectedOption?.value === "paper_windmill" ? (
+          <CommonForm />
+        ) :selectedOption?.value === "machine_design_autocad" ? (
+          <CommonForm />
+        ) :selectedOption?.value === "electrical_component" ? (
+          <CommonForm />
+        ) :selectedOption?.value === "machine_design_autocad" ? (
+          <CommonForm />
+        ) :selectedOption?.value === "painting" ? (
+          <CommonForm />
+        ) : selectedOption?.value === "photography" ? (
+          <CommonForm />
+        ) : selectedOption?.value === "treasure_hunt" ? (
+          <CommonForm />
+        ) : selectedOption?.value === "rubik_cube" ? (
+          <CommonForm />
+        ) : selectedOption?.value === "quiz" ? (
+          <CommonForm />
+        ) : selectedOption?.value === "debate" ? (
+          <CommonForm />
+        ) :selectedOption?.value === "tekken" ? (
+          <CommonGames />
+        ) : selectedOption?.value === "bgmi" ? (
           <Pubg />
         ) : selectedOption?.value === "mobile_legend" ? (
           <MobileLegend />
-        ) : selectedOption?.value === "quiz" ? (
-          <Quiz />
-        ) : (
+        ) : selectedOption?.value === "fc24" ? (
+          <CommonGames />
+        ) : selectedOption?.value === "light_vocal" ? (
+          <CommonForm />
+        ) : selectedOption?.value === "western_solo" ? (
+          <CommonForm />
+        ) : selectedOption?.value === "classical&folk" ? (
+          <CommonForm />
+        ) : selectedOption?.value === "modern" ? (
+          <CommonForm />
+        ) : selectedOption?.value === "cosplay" ? (
+          <CommonForm />
+        ) : selectedOption?.value === "reel" ? (
+          <CommonForm />
+        ) :(
           <div className="h-dvh flex justify-center items-center">
             <l-quantum size="150" speed="4" color="blue"></l-quantum>
           </div>
