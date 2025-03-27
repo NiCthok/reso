@@ -1,42 +1,35 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const images = [
   { src: "/reso2025.png", title: "Tech Revolution" },
   { src: "/reo.png", title: "Innovators Meet" },
-  { src: "/resoOrange.png", title: "Future of Technology" }
+  { src: "/resoOrange.png", title: "Future of Technology" },
 ];
 
-export default function ImageSlider() {
+function ImageCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [slideDirection, setSlideDirection] = useState(""); // Track direction
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 3000); // Auto-slide every 3 seconds
+    }, 5000);
     return () => clearInterval(interval);
-  }, [currentIndex]);
-
-  const prevSlide = () => {
-    setSlideDirection("-translate-x-full"); // Move left
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-      setSlideDirection("translate-x-0");
-    }, 300); // Same smooth animation
-  };
-
-  const nextSlide = () => {
-    setSlideDirection("translate-x-full"); // Move right
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-      setSlideDirection("translate-x-0");
-    }, 300); // Same timing as prevSlide
-  };
+  }, []);
 
   return (
     <div className="h-screen bg-transparent flex flex-col items-center justify-center relative px-4">
       <h1
-        className="font-extrabold text-4xl md:text-5xl text-white tracking-widest mb-4 text-center"
+        className="font-extrabold text-5xl md:text-6xl text-white tracking-widest mb-6 text-center"
         style={{
           WebkitTextStroke: "1px #ff6347",
         }}
@@ -44,52 +37,54 @@ export default function ImageSlider() {
         EVENTS
       </h1>
 
-      {/* Dynamic Subheading */}
-      <h2 className="text-2xl text-red-400 font-semibold mb-6">
+      <h2 className="text-3xl text-red-400 font-semibold mb-6">
         {images[currentIndex].title}
       </h2>
 
-      {/* Image Container - Responsive */}
-      <div className="relative w-full max-w-[1000px] h-[900px] md:h-[500px] rounded-xl overflow-hidden border border-red-400">
-        {images.map((img, index) => (
+      <div className="relative w-full md:w-4/5 lg:w-3/4 xl:w-2/3 mx-auto border-4 border-red-500 rounded-lg overflow-hidden">
+        <div className="relative h-[450px] md:h-[500px] flex items-center justify-center bg-black">
           <img
+            src={images[currentIndex].src}
+            alt={images[currentIndex].title}
+            className="w-full h-full object-cover transition-opacity duration-700"
+          />
+        </div>
+
+        <button
+          onClick={prevSlide}
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-red-900 p-3 rounded-full hover:bg-red-500 transition"
+        >
+          <img
+            src="/Icon/less.svg"
+            alt="Previous"
+            className="w-6 h-6 hover:filter brightness-75"
+          />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-red-900 p-3 rounded-full hover:bg-red-500 transition"
+        >
+          <img
+            src="/Icon/greater.svg"
+            alt="Next"
+            className="w-6 h-6 hover:filter brightness-75"
+          />
+        </button>
+      </div>
+
+      <div className="flex space-x-3 mt-4">
+        {images.map((_, index) => (
+          <button
             key={index}
-            src={img.src}
-            alt="Event"
-            className={`absolute w-full h-full object-cover transition-transform duration-300 ease-in-out 
-            ${
-              index === currentIndex
-                ? "translate-x-0 opacity-100"
-                : slideDirection + " opacity-0"
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3.5 h-3.5 rounded-full ${
+              index === currentIndex ? "bg-red-500" : "bg-gray-400"
             }`}
           />
         ))}
       </div>
-      <div> 
-      {/* Left Button */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-20 top-1/2 transform -translate-y-1/2 bg-red-500 p-2 rounded-full shadow-lg hover:bg-red-300 transition"
-      >
-        <img
-          src="/less.svg"
-          alt="Left"
-          className="w-6 h-6 opacity-80 hover:opacity-100 transition"
-        />
-      </button>
-
-      {/* Right Button */}
-      <button
-        onClick={nextSlide}
-        className="absolute right-20 top-1/2 transform -translate-y-1/2 bg-red-500 p-2 rounded-full shadow-lg hover:bg-red-300 transition"
-      >
-        <img
-          src="/greater.svg"
-          alt="Right"
-          className="w-6 h-6 opacity-80 hover:opacity-100 transition"
-        />
-      </button>
-      </div>
     </div>
   );
 }
+
+export default ImageCarousel;
