@@ -34,7 +34,7 @@ useEffect(() => {
 
 useEffect(() => {
   if (location.pathname !== "/") {
-    setActiveSection(""); // Reset active section if not on home page
+    setActiveSection(""); 
     return;
   }
 
@@ -46,7 +46,7 @@ useEffect(() => {
         }
       });
     },
-    { threshold: 0.6 } // Adjust for better tracking
+    { threshold: 0.6 } 
   );
 
   const sections = document.querySelectorAll("section");
