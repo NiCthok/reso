@@ -99,7 +99,7 @@ const Profile = () => {
               className="p-2 flex items-center gap-2 rounded cursor-pointer transition hover:text-red-500 hover:font-bold"
               onClick={handleLogOut}
             >
-              <CiLogout className="text-xl transition hover:text-red-500" />{" "}
+              <CiLogout className="text-xl" />{" "}
               Logout
             </li>
           </ul>
