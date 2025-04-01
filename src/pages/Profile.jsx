@@ -71,6 +71,7 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-black text-white flex">
+
       <div className="w-1/4 bg-zinc-900 shadow-md shadow-red-500/50 p-6 rounded-lg">
         <h2 className="text-xl font-semibold mb-4 text-red-500">
           Hello, {profile?.name}
@@ -105,10 +106,12 @@ const Profile = () => {
         </nav>
       </div>
 
+      
       <div className="bg-zinc-900 p-6 shadow-md shadow-red-500/50 rounded-md w-1/2 ml-10">
         {profile ? (
           <>
             {showEventsRegister ? (
+              
               <div>
                 <h2 className="text-2xl font-semibold text-red-500">
                   Events Registered
@@ -116,6 +119,7 @@ const Profile = () => {
                 <p className="text-gray-400 mt-2">No content available yet.</p>
               </div>
             ) : (
+              
               <Edit
                 profile={profile}
                 uid={uid}
@@ -125,6 +129,7 @@ const Profile = () => {
               />
             )}
 
+            
             {!showEventsRegister && (
               <div className="mt-6 text-right">
                 <button
@@ -141,6 +146,7 @@ const Profile = () => {
         )}
       </div>
 
+      
       {showDeleteModal && (
         <Delete
           onChange={(value) => setPassword(value)}
