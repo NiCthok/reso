@@ -1,6 +1,7 @@
 import { scroller } from "react-scroll";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
-import { useEffect , useState} from "react";
+import { useEffect, useState } from "react";
+import { CgProfile } from "react-icons/cg";
 
 const UserHeader = () => {
   const location = useLocation();
@@ -95,7 +96,7 @@ const UserHeader = () => {
               : "text-white"
           }`}
         >
-          Profile
+          <CgProfile className="size-7" />
         </RouterLink>
       </div>
     </nav>

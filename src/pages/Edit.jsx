@@ -1,14 +1,13 @@
-import { useState,useEffect } from "react";
-import Button from "../components/Button";
+import { useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../backend/config/firebase";
 import toast from "react-hot-toast";
 
-const Edit = ({ name, onClose, uid }) => {
-  const [updatedName, setUpdatedName] = useState("");
+const Edit = ({ profile, uid, setProfile, editMode, setEditMode }) => {
+  const [updatedName, setUpdatedName] = useState(profile.name);
 
   const handleUpdate = async () => {
-    if (!updatedName) {
+    if (!updatedName.trim()) {
       toast.error("Name cannot be empty!");
       return;
     }
@@ -16,39 +15,44 @@ const Edit = ({ name, onClose, uid }) => {
     try {
       const userDoc = doc(db, "Users", uid);
       await updateDoc(userDoc, { name: updatedName });
+      setProfile((prevProfile) => ({ ...prevProfile, name: updatedName }));
+      setEditMode(false);
       toast.success("Name Changed Successfully!");
-
-      setTimeout(() => {
-        window.location.href = "/profile";
-      }, 1000);
     } catch (e) {
       toast.error(e.message);
     }
   };
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center bg-zinc-950/75">
-      <div className="bg-zinc-900 p-6 rounded-lg shadow-lg">
-        <h2 className="text-xl text-white font-bold mb-4">Edit Profile</h2>
-        <label className="text-white">Name</label>
+    <div>
+      <h1 className="text-red-500 text-2xl font-semibold mb-4 flex justify-between">
+        Personal Information
+        <button
+          onClick={editMode ? handleUpdate : () => setEditMode(true)}
+          className="text-red-300 px-3 py-1 rounded-md transition hover:text-red-500"
+        >
+          {editMode ? "Save" : "Edit"}
+        </button>
+      </h1>
+      <div className="mb-4">
+        <label className="block text-white pb-2">Name</label>
         <input
-          id="name"
           type="text"
-          placeholder={name}
-          onChange={(e) => {
-            setUpdatedName(e.target.value);
-          }}
-          required={true}
-          className="w-full border-0 border-b-2 border-zinc-800 bg-transparent px-2 py-3 text-white text-sm focus:outline-none focus:border-blue-500"
+          name="name"
+          value={updatedName}
+          onChange={(e) => setUpdatedName(e.target.value)}
+          className={`w-full p-2 bg-black border border-red-500 rounded-md transition focus:outline-none 
+          ${editMode ? "hover:bg-red-500/20" : "cursor-not-allowed opacity-50"}`}
+          disabled={!editMode}
         />
-
-        <div className="mt-4 flex justify-end gap-2">
-          <Button label={"Cancel"} type={"button"} onClick={onClose} />
-          <Button label={"Update"} onClick={handleUpdate} type={"button"} />
-        </div>
+      </div>
+      <div className="mb-4 flex justify-between">
+        <h2 className="text-lg font-semibold">Email Address</h2>
+        <p className="text-gray-400">{profile.email}</p>
       </div>
     </div>
   );
 };
 
 export default Edit;
+
